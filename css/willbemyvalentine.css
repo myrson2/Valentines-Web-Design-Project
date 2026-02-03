@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Preahvihear&display=swap');
+
+:root {
+    --bg-color: #FFE7ED;
+    --color-blue: #0172B6;
+    --color-beige: #FAF3E1;
+    --color-red: #B92323;
+    --header-font: "Montserrat", sans-serif;
+    --para-font: "Preahvihear", sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg-color);
+    
+    /* FIX 1: Make body a Flex Container to center the 'main' tag */
+    display: flex;
+    justify-content: center; /* Centers 'main' Horizontally (Left/Right) */
+    align-items: center;     /* Centers 'main' Vertically (Up/Down) */
+    font-family: var(--para-font);
+}
+
+main {
+    width: 50%;
+    display: flex;
+}
+
+.segment-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-1 h1 {
+    font-family: var(--header-font);
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.container-1 p {
+    margin: 10px 0;
+    font-size: 24px;
+    font-family: var(--para-font);
+}
+
+.container-2 button {
+    height: 93px;
+    width: 215px;
+    border: 0;
+    background-color: var(--color-blue);
+    color: white;
+    border-radius: 20px;
+    font-family: var(--para-font);
+    font-size: 40px;
+}
+
+.container-2 .no {
+    background-color: var(--color-red);
+}
+
+.container-2 button:hover {
+    filter: brightness(90%);
+    transition: .5s;
+}
+
+        /* Page Transition Styles */
+        body {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Main content animations */
+        main {
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Segment animations - staggered entrance */
+        .segment-1 {
+            opacity: 0;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards;
+        }
+
+        .segment-2 {
+            opacity: 0;
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.8s forwards;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Container animations */
+        .container-1 h1 {
+            opacity: 0;
+            animation: textReveal 1s ease-out 1.2s forwards;
+        }
+
+        .container-1 p {
+            opacity: 0;
+            animation: textReveal 1s ease-out 1.4s forwards;
+        }
+
+        @keyframes textReveal {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Button animations */
+        .container-2 .yes {
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.6s forwards;
+        }
+
+        .container-2 .no {
+            opacity: 0;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.8s forwards;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Floating heart animation for extra cuteness */
+        .heart-float {
+            position: fixed;
+            font-size: 40px;
+            opacity: 0;
+            animation: floatHeart 3s ease-in-out forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0;
+            animation: sparkle 2s ease-out forwards;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(360deg);
+            }
+        }
+
+        /* Flower Animation Styles */
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            opacity: 0;
+            animation: fall linear forwards;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                top: calc(100vh - 30px);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Celebration Screen Styles */
+        .celebration-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 231, 237, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .celebration-screen.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .celebration-content {
+            text-align: center;
+            background: white;
+            padding: 60px 80px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            transform: scale(0);
+            animation: celebrationPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+        }
+
+        @keyframes celebrationPop {
+            0% {
+                transform: scale(0) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .celebration-content h1 {
+            font-family: "Montserrat", sans-serif;
+            font-size: 48px;
+            color: #FF69B4;
+            margin-bottom: 20px;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { color: #FF69B4; }
+            25% { color: #FF1493; }
+            50% { color: #DB7093; }
+            75% { color: #C71585; }
+        }
+
+        .celebration-content p {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .celebration-content .emoji-row {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .proceed-button {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .proceed-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #FF69B4;
+            position: absolute;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Floating heart animation for extra cuteness */
+        .heart-float {
+            position: fixed;
+            font-size: 40px;
+            opacity: 0;
+            animation: floatHeart 3s ease-in-out forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            font-size: 20px;
+            opacity: 0;
+            animation: sparkle 2s ease-out forwards;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(360deg);
+            }
+        }
+
+        /* Flower Animation Styles */
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            opacity: 0;
+            animation: fall linear forwards;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                top: calc(100vh - 30px);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }

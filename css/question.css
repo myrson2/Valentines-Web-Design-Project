@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Preahvihear&display=swap');
+
 :root {
     --bg-color: #FFE7ED;
     --color-blue: #0172B6;
@@ -16,7 +18,45 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     width: 100%;
     background-color: var(--bg-color);
+    display: flex; /* Centers 'main' Horizontally (Left/Right) */
+    align-content: center; 
+    justify-content: center;
+}
+
+main {
+    width: 75%;
+    
+    /* FIX 2: Internal Layout of the Main tag */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    
+    /* REMOVED: justify-items: center; (This does not work in Flexbox) */
+    /* OPTIONAL: If you want items centered vertically inside the 75% width box: */
+}
+
+.container-2 h1{
+    font-family: var(--para-font);
+    font-size: 64px;
+    font-weight: 100;
+    text-align: center;
+    margin: 0 100px
+}
+
+.container-3 button {
+    height: 60px;
+    width: 120px;
+    border: 0;
+    background-color: var(--color-blue);
+    color: white;
+    border-radius: 20px;
+    font-family: var(--para-font);
+    font-size: 20px;
+}
+
+.container-3 button:hover{
+    filter: brightness(90%);
+    transition: .5s;
 }
