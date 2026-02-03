@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Preahvihear&display=swap');
+
+:root {
+    --bg-color: #FFE7ED;
+    --color-blue: #0172B6;
+    --color-beige: #FAF3E1;
+    --color-red: #B92323;
+    --header-font: "Montserrat", sans-serif;
+    --para-font: "Preahvihear", sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-color);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+nav .container {
+    background-color: var(--color-beige);
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    margin: 10px;
+    border-radius: 100px;
+    border: 1px solid black;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    padding: 20px;
+    overflow: hidden;
+}
+
+header {
+    min-height: 95vh;
+    background-color: #B92323;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-main-content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pictures img {
+    margin: 0 50px;
+}
+
+.pictures .pic-1, .pic-2{
+    position: relative;
+    top: 50px;
+}
+
+.header-container-2 h1 {
+    font-family: var(--header-font);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.header-container-2 p {
+    font-family: var(--para-font);
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: light;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

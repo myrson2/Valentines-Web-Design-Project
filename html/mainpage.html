@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/mainpage.css">
+    <title>VALENTINE</title>
+
+    <style>
+        header {
+  position: relative; /* IMPORTANT */
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  animation: bounce 1.5s infinite;
+}
+
+/* Animation */
+@keyframes bounce {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+    </style>
 </head>
 <body>
-    <h1> hi </h1>
+    <header>
+        <!-- <nav>
+        <div class="container">
+            <ul>
+                <li><p>letter</p></li>
+                <li><p>Dates</p></li>
+                <li><p>Remarks</p></li>
+            </ul>
+        </div>
+    </nav> -->
+
+        <div class="header-main-content">
+            <div class="pictures">
+                <img class="pic-2" src="/Components/hello pink 2.png" alt="" srcset="" height="252px" width="252px">
+                <img class="pic-3" src="/Components/hello pink 3.png" alt="" srcset=""height="292px" width="292px">
+                <img class="pic-1" src="/Components/hello pink 1.png" alt="" srcset="" height="252px" width="202px">
+            </div>
+
+            <div class="header-container-2">
+                <h1> Thank you, My Baby!! </h1>
+                <p>Thank you for accepting the invitation to be my Valentine. Your selection has been logged, the itinerary is locked, and I officially look forward to our scheduled excellence.</p>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <a href="#section">
+                <img src="/Components/gift box.png" alt="" srcset="" height="50px" width="50px" >
+            </a>
+        </div>
+    </header>
+
+    <section id="section">
+        <h1> hello </h1>
+    </section>
 </body>
 </html>
