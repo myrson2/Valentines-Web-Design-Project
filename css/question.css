@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #FFE7ED;
+    --color-blue: #0172B6;
+    --color-beige: #FAF3E1;
+    --color-red: #B92323;
+    --header-font: "Montserrat", sans-serif;
+    --para-font: "Preahvihear", sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg-color);
+}
