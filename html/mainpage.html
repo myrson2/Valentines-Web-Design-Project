@@ -1,73 +1,406 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/mainpage.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/mainpage.css" />
     <title>VALENTINE</title>
 
     <style>
-        header {
-  position: relative; /* IMPORTANT */
-}
 
-.scroll-indicator {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 32px;
-  animation: bounce 1.5s infinite;
-}
+       
+        /* Responsive Design */
+       
 
-/* Animation */
-@keyframes bounce {
-  0% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, 10px);
-  }
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
+        
     </style>
-</head>
-<body>
-    <header>
-        <!-- <nav>
-        <div class="container">
-            <ul>
-                <li><p>letter</p></li>
-                <li><p>Dates</p></li>
-                <li><p>Remarks</p></li>
-            </ul>
-        </div>
-    </nav> -->
+  </head>
+  <body>
+    <header id="header">
+        <div class="navigation">
+            <div class="nav-wrapper">
+                <!-- Home Button -->
+                 <a href="#header">
+                <button class="home-button" id="homeBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </button>
+                </a>
 
-        <div class="header-main-content">
-            <div class="pictures">
-                <img class="pic-2" src="/Components/hello pink 2.png" alt="" srcset="" height="252px" width="252px">
-                <img class="pic-3" src="/Components/hello pink 3.png" alt="" srcset=""height="292px" width="292px">
-                <img class="pic-1" src="/Components/hello pink 1.png" alt="" srcset="" height="252px" width="202px">
+                <!-- Navigation Bar -->
+                <nav class="nav-container">
+                    <div class="slider" id="slider"></div>
+                    <div class="nav-items">
+                       <a href="#section-1"><div class="nav-item active" data-index="0">Letter</div></a> 
+                        <a href="#section-2"><div class="nav-item" data-index="1">Dates</div></a>
+                        <a href="#section-3"><div class="nav-item" data-index="2">Remarks</div></a>
+                    </div>
+                </nav>
             </div>
+    </div>
 
-            <div class="header-container-2">
-                <h1> Thank you, My Baby!! </h1>
-                <p>Thank you for accepting the invitation to be my Valentine. Your selection has been logged, the itinerary is locked, and I officially look forward to our scheduled excellence.</p>
-            </div>
+      <div class="header-main-content">
+        <div class="pictures">
+          <img
+            class="pic-2"
+            src="/Components/hello pink 2.png"
+            alt=""
+            srcset=""
+            height="252px"
+            width="252px"
+          />
+          <img
+            class="pic-3"
+            src="/Components/hello pink 3.png"
+            alt=""
+            srcset=""
+            height="292px"
+            width="292px"
+          />
+          <img
+            class="pic-1"
+            src="/Components/hello pink 1.png"
+            alt=""
+            srcset=""
+            height="252px"
+            width="202px"
+          />
         </div>
 
-        <div class="scroll-indicator">
-            <a href="#section">
-                <img src="/Components/gift box.png" alt="" srcset="" height="50px" width="50px" >
-            </a>
+        <div class="header-container-2">
+          <h1>Thank you, My Baby!!</h1>
+          <p>
+            Thank you for accepting the invitation to be my Valentine. Your
+            selection has been logged, the itinerary is locked, and I officially
+            look forward to our scheduled excellence.
+          </p>
         </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <a href="#section-1">
+          <img
+            src="/Components/gift box.png"
+            alt=""
+            srcset=""
+            height="50px"
+            width="50px"
+          />
+        </a>
+      </div>
     </header>
 
-    <section id="section">
-        <h1> hello </h1>
+    <section id="section-1">
+      <div class="section-container">
+
+        <div class="hearts">
+            <img src="/Components/heart.png" alt="" height="45px" width="50px">
+            <img src="/Components/heart.png" alt="" height="45px" width="50px">
+            <img src="/Components/heart.png" alt="" height="45px" width="50px">
+        </div>
+        <div>
+          <img src="/Components/us.png" alt="" srcset="" width="514px" height="693px"/>
+        </div>
+
+        <div>
+          <h1>HI MY VALENTINE,</h1>
+          <p>
+            This year have passed, a lot of happy and even bad moments, realization, and learning happened in our relationship. I am happy how we strongly hold our relationship and never let things get bad to us. We still choose each other even in a toughest times. And grow our love in our most precious time.  
+          </p>
+
+          <p>
+            I am happy to see what this year comes to us. Explore things, eat, visit places and something that we never had done this past year.
+          </p>
+
+          <p> 
+            And still, still be wanna with you in a next days, years, decades and in my life. I love you.
+          </p>
+
+          <p class="author">-myrson</p>
+        </div>
+      </div>
     </section>
-</body>
+
+    <section id="section-2">
+        <div>
+            <div class="sec2-header">
+                <h1> OUR PLANNED DATES <br>(FEBRUARY) </h1>
+            </div>
+
+            <div class="div-buttons">
+                <div class="div-button-1">
+                    <div class="btn1-content">
+                        <h1>ANNIVERSARY</h1>
+                        <p>02.09</p>
+                    </div>
+                    <div class="countdown">
+                        <h1>05</h1>
+                        <p>days left</p>
+                    </div>
+                </div>
+
+                <div class="div-button-1">
+                    <div class="btn1-content">
+                        <h1>VALENTINES</h1>
+                        <p>02.14</p>
+                    </div>
+                    <div class="countdown">
+                        <h1>09</h1>
+                        <p>days left</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-3">
+        <main>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-1.jpg" alt="Image 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-2.jpg" alt="Image 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-3.jpg" alt="Image 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-4.jpg" alt="Image 4">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-5.jpg" alt="Image 5">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-6.jpg" alt="Image 6">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-7.jpg" alt="Image 7">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-8.jpg" alt="Image 8">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-9.jpg" alt="Image 9">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/Components/pic-10.jpg" alt="Image 10">
+                    </div>
+                </div>
+
+                <button class="nav-button prev-btn" aria-label="Previous">‹</button>
+                <button class="nav-button next-btn" aria-label="Next">›</button>
+
+                <div class="carousel-indicators"></div>
+            </div>
+
+            <div class="remarks">
+                <h1> I LOVE YOU BABY! </h1>
+                <p> Thank you for taking the time to explore this little corner of the internet I built for you. Having you in my life is the greatest gift, and thank you for being my favorite person to plan things for. </p>
+            </div>
+
+        </main>
+
+    </section>
+
+    <footer>
+        <p>I invite you to capture this moment; please feel free to save or screenshot this page as a keepsake of our journey.</p>
+    </footer>
+
+    <script>
+        class SlidingNav {
+    constructor() {
+        this.navItems = document.querySelectorAll('.nav-item');
+        this.slider = document.getElementById('slider');
+        this.homeBtn = document.getElementById('homeBtn');
+        this.isManualScrolling = false; // Flag to prevent observer conflict
+        
+        // Map sections to their index (0 = Home/Header)
+        this.sections = [
+            document.querySelector('#header'),
+            document.querySelector('#section-1'),
+            document.querySelector('#section-2'),
+            document.querySelector('#section-3')
+        ];
+
+        this.init();
+    }
+
+    init() {
+        // Start with Home Active
+        this.updateUI(0);
+
+        // Click listeners for Nav Items
+        this.navItems.forEach((item, index) => {
+            item.closest('a').addEventListener('click', (e) => {
+                this.isManualScrolling = true;
+                this.updateUI(index + 1);
+                // Allow observer to take back control after scroll finishes
+                setTimeout(() => { this.isManualScrolling = false; }, 800);
+            });
+        });
+
+        // Click listener for Home
+        this.homeBtn.closest('a').addEventListener('click', () => {
+            this.isManualScrolling = true;
+            this.updateUI(0);
+            setTimeout(() => { this.isManualScrolling = false; }, 800);
+        });
+
+        // Intersection Observer for Auto-Tracking
+        const observerOptions = {
+            root: null,
+            threshold: 0.5 // Trigger when section is 50% visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (this.isManualScrolling) return; // Ignore if user just clicked a link
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = this.sections.indexOf(entry.target);
+                    if (index !== -1) this.updateUI(index);
+                }
+            });
+        }, observerOptions);
+
+        this.sections.forEach(sec => sec && observer.observe(sec));
+        
+        window.addEventListener('resize', () => this.refreshSlider());
+    }
+
+    updateUI(index) {
+        if (index === 0) {
+            this.setHomeActive();
+        } else {
+            this.setNavActive(index - 1);
+        }
+    }
+
+    setHomeActive() {
+        this.homeBtn.classList.add('active');
+        this.slider.classList.add('hidden');
+        this.navItems.forEach(item => item.classList.remove('active'));
+    }
+
+    setNavActive(navIndex) {
+        this.homeBtn.classList.remove('active');
+        this.slider.classList.remove('hidden');
+        
+        this.navItems.forEach((item, i) => {
+            item.classList.toggle('active', i === navIndex);
+        });
+
+        const activeItem = this.navItems[navIndex];
+        // Calculate position relative to container
+        const leftPos = activeItem.offsetLeft;
+        const width = activeItem.offsetWidth;
+
+        this.slider.style.width = `${width}px`;
+        this.slider.style.transform = `translateX(${leftPos - 8}px)`; 
+    }
+
+    refreshSlider() {
+        const activeItem = document.querySelector('.nav-item.active');
+        if (activeItem) {
+            const index = Array.from(this.navItems).indexOf(activeItem);
+            this.setNavActive(index);
+        }
+    }
+}
+
+// Replace your existing SlidingNav init with:
+document.addEventListener('DOMContentLoaded', () => {
+    new SlidingNav();
+});
+    
+        class FocusScaleCarousel {
+            constructor() {
+                this.slides = document.querySelectorAll('.carousel-slide');
+                this.prevBtn = document.querySelector('.prev-btn');
+                this.nextBtn = document.querySelector('.next-btn');
+                this.indicatorsContainer = document.querySelector('.carousel-indicators');
+                this.currentIndex = 0;
+                this.totalSlides = this.slides.length;
+                
+                this.init();
+            }
+
+            init() {
+                // Create indicators
+                this.createIndicators();
+                
+                // Set initial state
+                this.updateCarousel();
+                
+                // Event listeners
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prev();
+                    if (e.key === 'ArrowRight') this.next();
+                });
+            }
+
+            createIndicators() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('indicator');
+                    indicator.addEventListener('click', () => this.goToSlide(i));
+                    this.indicatorsContainer.appendChild(indicator);
+                }
+            }
+
+            updateCarousel() {
+                // Calculate indices using modulo for infinite loop
+                const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                const nextIndex = (this.currentIndex + 1) % this.totalSlides;
+
+                // Remove all classes first
+                this.slides.forEach(slide => {
+                    slide.classList.remove('prev', 'active', 'next');
+                });
+
+                // Apply classes to the three visible slides
+                this.slides[prevIndex].classList.add('prev');
+                this.slides[this.currentIndex].classList.add('active');
+                this.slides[nextIndex].classList.add('next');
+
+                // Update indicators
+                this.updateIndicators();
+            }
+
+            updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            next() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+                this.updateCarousel();
+            }
+
+            prev() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                this.updateCarousel();
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+            }
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FocusScaleCarousel();
+        });
+    </script>
+  </body>
 </html>
