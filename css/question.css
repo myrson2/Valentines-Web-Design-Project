@@ -9,7 +9,7 @@
     --para-font: "Preahvihear", sans-serif;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,44 +19,116 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    min-height: 100vh; 
     background-color: var(--bg-color);
-    display: flex; /* Centers 'main' Horizontally (Left/Right) */
-    align-content: center; 
+    display: flex;
+    align-items: center; 
     justify-content: center;
 }
 
 main {
-    width: 75%;
-    
-    /* FIX 2: Internal Layout of the Main tag */
+    width: 90%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    
-    /* REMOVED: justify-items: center; (This does not work in Flexbox) */
-    /* OPTIONAL: If you want items centered vertically inside the 75% width box: */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 30px;
 }
 
-.container-2 h1{
+/* --- IMAGE SECTION --- */
+main img {
+    max-width: 100%; 
+    height: auto;
+    /* ---- CHANGED HERE ---- */
+    width: 450px; /* Increased from 350px */
+    /* ---------------------- */
+    object-fit: contain;
+}
+
+/* --- TEXT SECTION --- */
+.container-2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-2 h1 {
     font-family: var(--para-font);
     font-size: 64px;
     font-weight: 100;
     text-align: center;
-    margin: 0 100px
+    line-height: 1.2;
+    color: black;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* --- BUTTON SECTION --- */
+.container-3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .container-3 button {
-    height: 60px;
-    width: 120px;
+    height: 70px;
+    width: 180px;
     border: 0;
     background-color: var(--color-blue);
     color: white;
     border-radius: 20px;
     font-family: var(--para-font);
-    font-size: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(1, 114, 182, 0.3);
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.container-3 button:hover{
-    filter: brightness(90%);
-    transition: .5s;
+.container-3 button:hover {
+    filter: brightness(110%);
+    transform: translateY(-4px);
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Tablet Landscape / Small Laptops (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    main img {
+        /* ---- CHANGED HERE ---- */
+        width: 380px; /* Increased from 300px */
+        /* ---------------------- */
+    }
+
+    .container-2 h1 {
+        font-size: 48px;
+    }
+}
+
+/* Tablet Portrait / Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    main {
+        width: 95%;
+        gap: 20px;
+    }
+
+    main img {
+        /* ---- CHANGED HERE ---- */
+        width: 300px; /* Increased from 250px */
+        /* ---------------------- */
+    }
+
+    .container-2 h1 {
+        font-size: 32px;
+        padding: 0 10px;
+    }
+
+    .container-3 button {
+        height: 60px;
+        width: 150px;
+        font-size: 20px;
+    }
 }

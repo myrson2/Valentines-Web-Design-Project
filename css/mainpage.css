@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Preahvihear&display=swap');
 
+/* --- 1. GLOBAL VARIABLES & RESET --- */
 :root {
     --bg-color: #FFE7ED;
     --color-blue: #0172B6;
@@ -9,515 +10,436 @@
     --para-font: "Preahvihear", sans-serif;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+    background-color: var(--bg-color); 
+    font-family: var(--para-font); 
+    overflow-x: hidden; 
 }
 
-body{
-    background-color: var(--bg-color);
-    font-family: var(--para-font);
+/* --- 2. NAVIGATION --- */
+.navigation { 
+    position: fixed; 
+    z-index: 10000; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
-html {
-    scroll-behavior: smooth;
+.nav-wrapper { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; /* Reduced gap slightly */
 }
 
-.navigation {
-    position: fixed;
-    z-index: 10000;
+.nav-items a { 
+    text-decoration: none; 
+    display: block; 
 }
 
-.nav-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
+/* Home Button */
 .home-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #f5f1e8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border: none;
+    width: 55px; height: 55px; border-radius: 50%;
+    background: #f5f1e8; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s;
+}
+.home-button:hover, .home-button.active { 
+    transform: scale(1.1); 
+    background: #e8d5b7; 
+}
+.home-button svg { width: 24px; height: 24px; fill: #333; }
+
+/* --- 2. NAVIGATION --- */
+.navigation { 
+    position: fixed; 
+    z-index: 10000; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
-.home-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+.nav-wrapper { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
 }
 
-/* Add/Update these in your <style> */
-.home-button.active {
-    background: #e8d5b7 !important;
-    transform: scale(1.1);
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+.nav-items a { 
+    text-decoration: none; 
+    display: block; 
 }
 
-.slider {
-    opacity: 1;
-    transform: scale(1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Home Button */
+.home-button {
+    width: 55px; height: 55px; border-radius: 50%;
+    background: #f5f1e8; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s;
 }
-
-.slider.hidden {
-    opacity: 0 !important;
-    transform: scale(0.5) !important;
+.home-button:hover, .home-button.active { 
+    transform: scale(1.1); 
+    background: #e8d5b7; 
 }
+.home-button svg { width: 24px; height: 24px; fill: #333; }
 
-/* Ensure images in the nav links don't break the layout */
-.nav-items a {
-    text-decoration: none;
-    display: block;
-}
-
-.home-button svg {
-    width: 28px;
-    height: 28px;
-    fill: #333;
-}
-
+/* Nav Bar Container */
 .nav-container {
-    position: relative;
-    background: #f5f1e8;
+    position: relative; 
+    background: #f5f1e8; 
     border-radius: 50px;
-    padding: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    gap: 8px;
+    padding: 5px; /* Creates the gap around the slider */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex; 
+    /* Removed gap here so JS calculates width accurately */
+    gap: 0; 
 }
 
-.nav-items {
+.nav-items { 
+    position: relative; 
+    display: flex; 
+    /* Removed gap here too - we control spacing with padding */
+    gap: 0; 
+    z-index: 2; 
+}
+
+/* Nav Items (The Text) */
+.nav-item {
+    padding: 12px 32px; /* Balanced Left/Right padding */
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: 700;
+    color: #333; 
+    transition: color 0.3s ease; 
+    border-radius: 50px; 
+    min-width: 100px; 
+    text-align: center;
     position: relative;
-    display: flex;
-    gap: 8px;
     z-index: 2;
 }
 
-.nav-item {
-    padding: 16px 40px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    position: relative;
-    user-select: none;
-    text-align: center;
-    min-width: 140px;
+.nav-item.active { 
+    color: #2c2c2c; 
 }
 
-.nav-item:hover:not(.active) {
-    transform: scale(1.05);
-    opacity: 0.7;
-}
-
-.nav-item.active {
-    color: #2c2c2c;
-}
-
+/* The Slider (The Moving Background) */
 .slider {
-    position: absolute;
-    top: 8px;
-    left: 15px;
-    height: calc(100% - 16px);
-    background: #e8d5b7;
-    border-radius: 50px;
+    position: absolute; 
+    top: 5px; /* Matches .nav-container padding */
+    left: 5px; /* Matches .nav-container padding */
+    height: calc(100% - 10px); /* Adjusts height to fit inside padding */
+    background: #e8d5b7; 
+    border-radius: 50px; 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.1),
-        inset 0 -1px 2px rgba(255, 255, 255, 0.5),
-        0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 1; 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    /* No hardcoded width - JS handles it */
 }
 
+.slider.hidden { 
+    opacity: 0 !important; 
+    transform: scale(0.8); 
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    .nav-item {
+        padding: 10px 20px; 
+        font-size: 14px;
+        min-width: auto;
+    }
+    .home-button {
+        width: 45px; height: 45px;
+    }
+}
+/* --- 3. HEADER SECTION --- */
 #header {
-    position: relative; /* IMPORTANT */
-    min-height: 95vh;
+    position: relative;
+    min-height: 100vh;
     background-color: #B92323;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
-}
-
-#header a {
-    text-decoration: none;
+    padding-bottom: 50px;
+    overflow: hidden;
 }
 
 .header-main-content {
-    margin-top: 12rem;
-    width: 75%;
+    margin-top: 140px;
+    width: 90%; max-width: 1000px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px;
+}
+
+/* FIXED HEADER IMAGES */
+.pictures {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* Align bottoms */
+    width: 100%;
+    margin-bottom: 10px;
+    /* Use padding instead of fixed height to let it breathe */
+    padding-top: 20px; 
 }
 
 .pictures img {
-    margin: 0 50px;
-}
-
-.pictures .pic-1, .pic-2{
+    /* Base styling for all 3 images */
+    width: 28%; 
+    max-width: 260px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
     position: relative;
-    top: 50px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
 }
 
+/* Left Kitty */
+.pic-2 {
+    transform: rotate(-10deg);
+    z-index: 1;
+    margin-right: -40px; /* Pulls it right */
+    margin-bottom: -10px;
+}
+
+/* Middle Kitty (Biggest) */
+.pic-3 {
+    width: 35% !important; 
+    max-width: 320px !important;
+    z-index: 2; 
+    margin-bottom: 20px; /* Pushes up */
+}
+
+/* Right Kitty */
+.pic-1 {
+    transform: rotate(10deg);
+    z-index: 1;
+    margin-left: -40px; /* Pulls it left */
+    margin-bottom: -10px;
+}
+
+/* Header Text */
+.header-container-2 { text-align: center; max-width: 800px; z-index: 10; padding: 0 20px; }
 .header-container-2 h1 {
-    font-family: var(--header-font);
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 500;
+    font-family: var(--header-font); font-size: clamp(32px, 5vw, 64px);
+    font-weight: 600; margin-bottom: 20px;
 }
-
 .header-container-2 p {
-    font-family: var(--para-font);
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: light;
+    font-family: var(--para-font); font-size: clamp(16px, 2vw, 24px);
+    font-weight: 300; line-height: 1.6;
 }
 
-.scroll-indicator {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 32px;
-    animation: bounce 1.5s infinite;
-    }
+/* Scroll Arrow */
+.scroll-indicator { margin-top: auto; padding-bottom: 20px; animation: bounce 2s infinite; }
+.scroll-indicator img { width: 50px; height: 50px; }
+@keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
 
-    /* Animation */
-    @keyframes bounce {
-    0% {
-        transform: translate(-50%, 0);
-    }
-    50% {
-        transform: translate(-50%, 10px);
-    }
-    100% {
-        transform: translate(-50%, 0);
-    }
-}
 
+/* --- 4. SECTION 1: THE LETTER --- */
 #section-1 {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    min-height: 100vh; padding: 80px 20px;
+    background-color: white; display: flex; justify-content: center; align-items: center;
 }
 
 .section-container {
-    position: relative;
-    border-radius: 35px;
-    border: 1px solid black;
-    width: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative; 
     background-color: var(--color-beige);
-    min-height: 80vh;
-    padding: 50px;
-    gap: 50px;
-    box-shadow: 5px 5px 20px grey;
+    width: 90%; max-width: 1200px; 
+    border-radius: 40px; border: 2px solid #333;
+    padding: 60px; 
+    display: flex; gap: 60px; align-items: center;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.8);
 }
 
-.section-container .hearts {
+/* Fixed Hearts Position */
+.hearts {
     position: absolute;
-    display: flex;
-    gap: 10px;
-    bottom: 100%;
-    right: 80%;
-    transform: translateY(250%);
+    top: -25px; /* Sits on border */
+    right: 50px;
+    background-color: var(--color-beige); /* Hides border behind it */
+    padding: 0 15px;
+    border-radius: 20px;
+    display: flex; gap: 10px; z-index: 5;
+}
+.hearts img { width: 40px; height: 40px; animation: bounceHearts 2s infinite ease-in-out; }
+@keyframes bounceHearts { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.letter-image { flex: 1; display: flex; justify-content: center; }
+.letter-image img {
+    width: 100%; max-width: 450px; border-radius: 20px;
+    transform: rotate(-3deg); border: 5px solid white; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.section-container h1 {
-    font-family: var(--header-font);
-    color: var(--color-red);
-    font-size: 40px;
+.letter-content { flex: 1.2; }
+.letter-content h1 {
+    font-family: var(--header-font); color: var(--color-red);
+    font-size: clamp(32px, 4vw, 48px); margin-bottom: 30px; line-height: 1.1;
 }
-.section-container p {
-    font-size: 24px;
-    text-indent: 5rem;
-    line-height: 3.5rem;
+.letter-content p {
+    font-size: clamp(16px, 1.5vw, 20px); line-height: 1.8;
+    color: #333; margin-bottom: 20px; text-align: justify;
 }
-
 .author {
-    text-align: right;
-    color: var(--color-red);
+    margin-top: 40px; font-weight: bold; font-size: 24px;
+    text-align: right; color: var(--color-red);
 }
 
-#section-2 {
-    min-height: 40vh;
-    background-color: var(--color-blue);
-}
 
+/* --- 5. SECTION 2: DATES --- */
+#section-2 { min-height: 60vh; background-color: var(--color-blue); padding: 80px 20px; }
+.sec2-content { max-width: 1200px; margin: 0 auto; text-align: center; }
 .sec2-header h1 {
-    padding: 50px;
-    text-align: center;
-    font-size: 48px;
-    color: white;
-    font-family: var(--header-font);
-    letter-spacing: 5px;
+    color: white; font-family: var(--header-font); font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: 5px; margin-bottom: 60px;
 }
 
-.div-buttons {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    align-items: center;
-}
-
+.div-buttons { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
 .div-button-1 {
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 22%;
-    background-color: white;
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white; border-radius: 50px; width: 350px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 30px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); transition: 0.3s;
 }
+.div-button-1:hover { transform: translateY(-5px); }
 
-.div-button-1:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: scale(1.05);
-}
-
-.btn1-content h1 {
-    font-family: var(--header-font);
-}
-
-.btn1-content p {
-    text-align: right;
-}
-
+.btn1-content h1 { font-family: var(--header-font); font-size: 24px; color: #333; }
+.btn1-content p { text-align: left; font-size: 16px; color: #666; font-weight: bold; }
 .countdown {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-red);
-    padding: 10px;
-    border-radius: 10px;
-    line-height: 1.75rem;
-    color: white;
+    background-color: var(--color-red); color: white; padding: 10px 20px;
+    border-radius: 15px; text-align: center; min-width: 90px;
 }
+.countdown h1 { font-family: var(--header-font); font-size: 28px; margin: 0; }
+.countdown p { font-size: 10px; margin: 0; text-transform: uppercase; }
 
-.countdown h1 {
-    font-family: var(--header-font);
-    font-size: 48px;
-    margin-top: 10px;
-}
 
-.countdown p {
-    font-size: 12px;
-    text-align: right;
-    font-weight: 100;
-}
-
+/* --- 6. SECTION 3: CAROUSEL --- */
 #section-3 {
-    height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    overflow: hidden;
-    background-color: var(--bg-color); /* Add this to ensure white background */
+    min-height: 100vh; display: grid; place-items: center;
+    background-color: var(--bg-color); padding: 40px 20px;
 }
-
 #section-3 main {
-    width: 90%;
-    max-width: 1400px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+    width: 100%; max-width: 1400px; display: flex;
+    flex-direction: column; align-items: center; gap: 40px;
 }
 
 .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    height: 55vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    position: relative; width: 100%; height: 500px;
+    display: flex; align-items: center; justify-content: center;
 }
-
 .carousel-track {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
 }
-
 .carousel-slide {
-    position: absolute;
-    width: 300px;
-    height: 400px;
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: scale(0.8) translateX(0);
-    pointer-events: none;
-    z-index: 1;
-    border-radius: 20px; /* Move border-radius here */
-    overflow: hidden; /* Add this to clip the image properly */
-    background-color: transparent; /* Ensure no background */
+    position: absolute; width: 300px; height: 400px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0; transform: scale(0.8); pointer-events: none;
+    border-radius: 20px; overflow: hidden; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3); border: 4px solid white;
 }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    user-select: none;
-    -webkit-user-drag: none;
-    display: block; /* Remove inline spacing */
-}
+.carousel-slide.active { opacity: 1; transform: scale(1.1); z-index: 3; pointer-events: auto; }
+.carousel-slide.prev { opacity: 0.6; transform: translateX(-320px) scale(0.85) rotate(-5deg); z-index: 2; }
+.carousel-slide.next { opacity: 0.6; transform: translateX(320px) scale(0.85) rotate(5deg); z-index: 2; }
 
-/* Previous slide - left side */
-.carousel-slide.prev {
-    opacity: 0.5;
-    transform: scale(0.75) translateX(-350px);
-    z-index: 2;
-    pointer-events: auto;
-}
-
-/* Active slide - center */
-.carousel-slide.active {
-    opacity: 1;
-    transform: scale(1.15) translateX(0);
-    z-index: 3;
-    pointer-events: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-
-/* Next slide - right side */
-.carousel-slide.next {
-    opacity: 0.5;
-    transform: scale(0.75) translateX(350px);
-    z-index: 2;
-    pointer-events: auto;
-}
-
-/* Navigation buttons */
+/* Navigation Arrows */
 .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--color-red);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: var(--color-red); width: 50px; height: 50px;
+    border-radius: 50%; color: white; border: none; font-size: 24px;
+    cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
 
-.nav-button:hover {
-    filter: brightness(90%);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.nav-button:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.nav-button.prev-btn {
-    left: 20px;
-}
-
-.nav-button.next-btn {
-    right: 20px;
-}
-
-/* Indicator dots */
+/* Dots */
 .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
+    position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px;
 }
-
 .indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-blue);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: 0.3s;
 }
-
-.indicator.active {
-    background: var(--color-blue);
-    width: 25px;
-    border-radius: 5px;
-}
+.indicator.active { background: var(--color-blue); transform: scale(1.2); }
 
 .remarks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    max-width: 800px;
-    text-align: center;
-    padding: 40px;
-    border: 3px dashed var(--color-blue);
-    border-radius: 25px;
-    background: white;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    max-width: 800px; text-align: center; padding: 40px; margin-top: 30px;
+    border: 3px dashed var(--color-blue); border-radius: 25px; background: white;
+}
+.remarks h1 { font-family: var(--header-font); color: var(--color-red); margin-bottom: 10px; }
+
+footer { background: #992223; padding: 20px; text-align: center; color: white; margin-top: 50px; }
+
+
+/* =========================================================
+   7. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================= */
+
+/* --- Tablet Landscape (1024px) --- */
+@media screen and (max-width: 1024px) {
+    .header-main-content { margin-top: 120px; }
+    .nav-item { padding: 12px 25px; min-width: auto; }
+    
+    .section-container { padding: 40px; gap: 30px; }
+    .letter-image img { max-width: 350px; }
+    
+    .carousel-slide { width: 250px; height: 350px; }
+    .carousel-slide.prev { transform: translateX(-240px) scale(0.85); }
+    .carousel-slide.next { transform: translateX(240px) scale(0.85); }
 }
 
-.remarks h1 {
-    font-family: var(--header-font);
-    font-size: clamp(32px, 5vw, 48px);
-    margin: 0;
-    color: var(--color-red);
-}
+/* --- Mobile & Tablet Portrait (768px) --- */
+@media screen and (max-width: 768px) {
+    /* Navigation: Smaller */
+    .nav-wrapper { gap: 10px; }
+    .nav-item { padding: 10px 15px; font-size: 13px; min-width: auto; }
+    .home-button { width: 45px; height: 45px; }
 
-.remarks p {
-    font-size: clamp(14px, 2vw, 18px);
-    line-height: 1.6;
-    margin: 0;
-    color: #555;
-}
+    /* Header: Stacked and Smaller */
+    .header-main-content { margin-top: 120px; gap: 20px; }
+    .pictures { height: 200px; }
+    .pictures img { width: 32%; max-width: 150px; }
+    /* Reset overlap for mobile so they fit */
+    .pic-2 { margin-right: -20px; }
+    .pic-1 { margin-left: -20px; }
+    
+    /* Section 1: Stack Vertical */
+    #section-1 { padding: 40px 10px; height: auto; }
+    .section-container { 
+        flex-direction: column; 
+        padding: 30px 20px; 
+        gap: 30px; 
+    }
+    
+    /* Put image ON TOP of text */
+    .letter-image { order: -1; width: 100%; }
+    .letter-image img { max-width: 280px; transform: rotate(0deg); }
+    
+    .letter-content { width: 100%; }
+    .letter-content p { text-align: left; }
+    
+    /* Center Hearts */
+    .hearts { 
+        top: -20px; 
+        right: 50%; transform: translateX(50%); 
+        background: var(--color-beige); padding: 0 10px;
+    }
 
-footer {
-    background-color: #992223;
-    padding: 10px;
-}
+    /* Section 2: Stack Buttons */
+    .div-buttons { flex-direction: column; width: 100%; align-items: center; gap: 20px; }
+    .div-button-1 { width: 100%; max-width: 320px; }
 
-footer p {
-    text-align: center;
-    font-size: 12px;
-    color: white;
+    /* Section 3: Carousel Mobile Stack */
+    .carousel-container { height: 400px; }
+    .carousel-slide { width: 220px; height: 320px; }
+    /* Tighten the spread for mobile */
+    .carousel-slide.prev { transform: translateX(-60px) scale(0.9) rotate(-5deg); z-index: 1; opacity: 0.5; }
+    .carousel-slide.next { transform: translateX(60px) scale(0.9) rotate(5deg); z-index: 1; opacity: 0.5; }
+    
+    /* Hide arrows on mobile (optional, swipe is better but arrows overlap) */
+    .nav-button { width: 40px; height: 40px; font-size: 18px; }
+    .prev-btn { left: 0; }
+    .next-btn { right: 0; }
 }

@@ -1,145 +1,118 @@
- const flowerColors = ['#FF69B4', '#FFB6C1', '#FFC0CB', '#FF1493', '#DB7093', '#C71585'];
-        const flowerTypes = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹'];
 
-        function createFlower() {
-            const flower = document.createElement('div');
-            flower.className = 'flower';
-            
-            // Random flower type and color
-            const flowerType = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
-            const flowerColor = flowerColors[Math.floor(Math.random() * flowerColors.length)];
-            
-            flower.textContent = flowerType;
-            flower.style.color = flowerColor;
-            flower.style.left = Math.random() * 100 + '%';
-            
-            // Random duration between 4-7 seconds
-            const duration = 4 + Math.random() * 3;
-            flower.style.animationDuration = duration + 's';
-            
-            document.body.appendChild(flower);
-            
-            // Remove flower after falling + staying time
-            setTimeout(() => {
-                flower.style.animation = 'fadeOut 1s forwards';
-                setTimeout(() => {
-                    flower.remove();
-                }, 1000);
-            }, (duration * 1000) + 10000); // Falls + stays 10 seconds
-        }
+// --- NAVIGATION WITH SIMPLE TRANSITION ---
+function proceedNext() {
+    // 1. Add the CSS class to the body to start the animation
+    document.body.classList.add('fade-out-exit');
 
-        // Create flowers at intervals
-        setInterval(createFlower, 500);
-        
-        // Create initial flowers
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createFlower, i * 300);
-        }
+    // 2. Wait for 1000ms (1 second) matching the CSS transition time
+    setTimeout(() => {
+        window.location.href = '/html/mainpage.html';
+    }, 1000);
+}
+// --- CONFIGURATION ---
+const flowerTypes = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹'];
+const flowerColors = ['#FF69B4', '#FFB6C1', '#FFC0CB', '#FF1493', '#DB7093'];
+const confettiColors = ['#FFD700', '#FF69B4', '#00BFFF', '#32CD32', '#FF4500'];
 
-           // Run Away No Button Function
-      // Run Away No Button Function
-// Run Away No Button Function - FIXED to stay within screen
-        function runAwayNo(button) {
-            // Get current button size
-            const currentWidth = button.offsetWidth;
-            const currentHeight = button.offsetHeight;
-            
-            // Calculate new smaller size (reduce by 20% each click)
-            const newWidth = currentWidth * 0.8;
-            const newHeight = currentHeight * 0.8;
-            
-            // If button is too small, make it disappear
-            if (newWidth < 20 || newHeight < 20) {
-                button.style.opacity = '0';
-                setTimeout(() => {
-                    button.style.display = 'none';
-                }, 300);
-                return;
-            }
-            
-            // Set new size
-            button.style.width = newWidth + 'px';
-            button.style.height = newHeight + 'px';
-            button.style.fontSize = (newHeight * 0.4) + 'px';
-            
-            // Make button position fixed to move anywhere on screen
-            button.style.position = 'fixed';
-            
-            // Get viewport dimensions
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            
-            // Calculate safe boundaries (button stays fully visible)
-            const margin = 10;
-            const maxX = viewportWidth - newWidth - margin;
-            const maxY = viewportHeight - newHeight - margin;
-            
-            // Calculate random position within safe boundaries
-            const randomX = Math.max(margin, Math.random() * maxX);
-            const randomY = Math.max(margin, Math.random() * maxY);
-            
-            // Apply the new position
-            button.style.left = randomX + 'px';
-            button.style.top = randomY + 'px';
-        }
+// --- RUN AWAY BUTTON LOGIC ---
+function runAwayNo(button) {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const btnWidth = button.offsetWidth;
+    const btnHeight = button.offsetHeight;
+    const maxX = windowWidth - btnWidth - 50;
+    const maxY = windowHeight - btnHeight - 50;
+    const randomX = Math.max(0, Math.random() * maxX);
+    const randomY = Math.max(0, Math.random() * maxY);
 
-        // Create floating hearts on page load
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart-float';
-            heart.textContent = '💕';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.top = '50%';
-            document.body.appendChild(heart);
-            
-            setTimeout(() => heart.remove(), 3000);
-        }
+    button.style.position = 'fixed';
+    button.style.left = randomX + 'px';
+    button.style.top = randomY + 'px';
+}
 
-        // Create sparkles on page load
-        function createSparkle() {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.textContent = '✨';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            document.body.appendChild(sparkle);
-            
-            setTimeout(() => sparkle.remove(), 2000);
-        }
+// --- CELEBRATION LOGIC ---
+function celebrate() {
+    const celebrationScreen = document.getElementById('celebrationScreen');
+    celebrationScreen.classList.add('active');
 
-        // Trigger cute effects on page load
-        window.addEventListener('load', function() {
-            // Create initial hearts
-            setTimeout(() => createFloatingHeart(), 1000);
-            setTimeout(() => createFloatingHeart(), 1200);
-            setTimeout(() => createFloatingHeart(), 1400);
-            
-            // Create sparkles around the page
-            for (let i = 0; i < 8; i++) {
-                setTimeout(() => createSparkle(), 1000 + (i * 200));
-            }
-        });
+    // Create lots of confetti and hearts
+    const confettiInterval = setInterval(createConfetti, 30);
+    const heartInterval = setInterval(createCelebrationHeart, 100);
 
-         // Celebrate function when YES is clicked
-        function celebrate() {
-            const main = document.querySelector('main');
-            const celebrationScreen = document.getElementById('celebrationScreen');
-            
-            // Blur background
-            main.classList.add('blurred');
-            
-            // Show celebration screen
-            celebrationScreen.classList.add('active');
-            
-            // Create confetti
-            createConfetti();
-            
-            // Create celebration hearts
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => createCelebrationHeart(), i * 100);
-            }
-        }
+    // Stop creating after 5 seconds
+    setTimeout(() => {
+        clearInterval(confettiInterval);
+        clearInterval(heartInterval);
+    }, 5000);
+}
 
-        function proceedNext() {
-            window.location.href = '/html/mainpage.html'; // Change this to your next page
-        }
+// --- 1. FALLING CONFETTI (Falls OFF Screen) ---
+function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    
+    // Properties
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    confetti.style.width = '1px';
+    confetti.style.height = '1px';
+    confetti.style.borderRadius = '50%';
+    
+    // Animation
+    const duration = Math.random() * 2 + 2; // 2-4 seconds
+    confetti.style.animation = `fallOffScreen ${duration}s linear forwards`;
+
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), duration * 1000);
+}
+
+// --- 2. FALLING HEARTS (Falls OFF Screen) ---
+function createCelebrationHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart-fall';
+    heart.textContent = '💖';
+    
+    // Properties
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+    
+    // Animation
+    const duration = Math.random() * 2 + 3; // 3-5 seconds
+    heart.style.animation = `fallOffScreen ${duration}s linear forwards`;
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), duration * 1000);
+}
+
+// --- 3. BACKGROUND FLOWERS (Falls and STAYS at bottom) ---
+function createFlower() {
+    const flower = document.createElement('div');
+    flower.className = 'flower';
+    flower.textContent = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+    flower.style.color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+    flower.style.left = Math.random() * 95 + 'vw'; // Avoid extreme edges
+    
+    // Animation
+    // We calculate fall time, then wait 10 seconds before removing
+    const fallDuration = Math.random() * 3 + 4; // 4-7 seconds to fall
+    flower.style.animation = `fallAndSit ${fallDuration}s linear forwards`;
+
+    document.body.appendChild(flower);
+
+    // Logic to remove it after it sits for 10 seconds
+    const totalLife = (fallDuration * 1000) + 10000;
+    
+    setTimeout(() => {
+        flower.style.transition = "opacity 1s ease";
+        flower.style.opacity = "0";
+        setTimeout(() => flower.remove(), 1000);
+    }, totalLife);
+}
+
+// Start creating background flowers immediately
+setInterval(createFlower, 300);
+
+// --- NAVIGATION ---
+function proceedNext() {
+    window.location.href = '/html/mainpage.html';
+}
