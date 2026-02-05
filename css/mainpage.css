@@ -288,7 +288,7 @@ body {
 
 
 /* --- 5. SECTION 2: DATES --- */
-#section-2 { min-height: 60vh; background-color: var(--color-blue); padding: 80px 20px; }
+#section-2 { min-height: 40vh; background-color: var(--color-blue); padding: 80px 20px; }
 .sec2-content { max-width: 1200px; margin: 0 auto; text-align: center; }
 .sec2-header h1 {
     color: white; font-family: var(--header-font); font-size: clamp(32px, 5vw, 48px);
@@ -401,7 +401,6 @@ footer { background: #992223; padding: 20px; text-align: center; color: white; m
     .header-main-content { margin-top: 120px; gap: 20px; }
     .pictures { height: 200px; }
     .pictures img { width: 32%; max-width: 150px; }
-    /* Reset overlap for mobile so they fit */
     .pic-2 { margin-right: -20px; }
     .pic-1 { margin-left: -20px; }
     
@@ -413,14 +412,12 @@ footer { background: #992223; padding: 20px; text-align: center; color: white; m
         gap: 30px; 
     }
     
-    /* Put image ON TOP of text */
     .letter-image { order: -1; width: 100%; }
     .letter-image img { max-width: 280px; transform: rotate(0deg); }
     
     .letter-content { width: 100%; }
     .letter-content p { text-align: left; }
     
-    /* Center Hearts */
     .hearts { 
         top: -20px; 
         right: 50%; transform: translateX(50%); 
@@ -431,15 +428,35 @@ footer { background: #992223; padding: 20px; text-align: center; color: white; m
     .div-buttons { flex-direction: column; width: 100%; align-items: center; gap: 20px; }
     .div-button-1 { width: 100%; max-width: 320px; }
 
-    /* Section 3: Carousel Mobile Stack */
-    .carousel-container { height: 400px; }
-    .carousel-slide { width: 220px; height: 320px; }
-    /* Tighten the spread for mobile */
-    .carousel-slide.prev { transform: translateX(-60px) scale(0.9) rotate(-5deg); z-index: 1; opacity: 0.5; }
-    .carousel-slide.next { transform: translateX(60px) scale(0.9) rotate(5deg); z-index: 1; opacity: 0.5; }
+    /* --- FIXED CAROUSEL FOR MOBILE (One Image Only) --- */
+    .carousel-container { height: 450px; }
     
-    /* Hide arrows on mobile (optional, swipe is better but arrows overlap) */
-    .nav-button { width: 40px; height: 40px; font-size: 18px; }
-    .prev-btn { left: 0; }
-    .next-btn { right: 0; }
+    /* Make the active card bigger and centered */
+    .carousel-slide { 
+        width: 260px; 
+        height: 380px; 
+        /* Reset any desktop transforms */
+        transform: translateX(0) scale(0.8);
+    }
+    
+    /* Active Slide: Fully visible and centered */
+    .carousel-slide.active { 
+        opacity: 1; 
+        transform: translateX(0) scale(1); 
+        z-index: 10; 
+    }
+
+    /* Previous & Next Slides: HIDDEN */
+    .carousel-slide.prev, 
+    .carousel-slide.next { 
+        opacity: 0; /* Make invisible */
+        transform: translateX(0) scale(0.5); /* Shrink behind the main one */
+        z-index: 0; 
+        pointer-events: none; /* Prevent clicking hidden items */
+    }
+    
+    /* Show arrows clearly since we can't see side images */
+    .nav-button { width: 45px; height: 45px; font-size: 20px; background: rgba(185, 35, 35, 0.9); }
+    .prev-btn { left: 5px; }
+    .next-btn { right: 5px; }
 }

@@ -142,3 +142,52 @@ class FocusScaleCarousel {
         });
     }
 }   
+
+function updateCountdowns() {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    // --- THE FIX: Reset "Today" to Midnight (00:00:00) ---
+    // This ensures we count pure days, ignoring the current hour.
+    today.setHours(0, 0, 0, 0);
+
+    const targets = [
+        { 
+            id: 'timer-anniversary', 
+            date: new Date(currentYear, 1, 9) // Month 1 is February
+        },
+        { 
+            id: 'timer-valentine', 
+            date: new Date(currentYear, 1, 14) 
+        }
+    ];
+
+    targets.forEach(target => {
+        const element = document.getElementById(target.id);
+        
+        // Ensure target date is also set to midnight for fair comparison
+        target.date.setHours(0, 0, 0, 0);
+        
+        // Calculate the difference
+        const diffTime = target.date - today;
+        
+        // Use Math.round instead of ceil/floor for clean day calculation
+        const daysLeft = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+        if (daysLeft <= 0) {
+            // Checkmark if the day has arrived or passed
+            element.innerHTML = `
+                <div style="font-size: 40px; line-height: 1;">
+                    ✅
+                </div>
+            `;
+        } else {
+            element.querySelector('h1').innerText = daysLeft;
+            element.querySelector('p').innerText = "days left";
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', updateCountdowns);
+
+
