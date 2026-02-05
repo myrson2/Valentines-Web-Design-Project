@@ -32,7 +32,7 @@ function isPasswordCorrect() {
     const thisPassword = password.value;
 
     if (thisPassword.toLowerCase() === "myrson") {
-        window.location.href = "/html/question.html";
+        window.location.href = "question.html";
     } else {
         const paragraph = document.querySelector(".container-2 p");
         const header = document.querySelector(".container-1 h1");

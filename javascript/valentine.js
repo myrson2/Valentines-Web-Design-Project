@@ -114,5 +114,5 @@ setInterval(createFlower, 300);
 
 // --- NAVIGATION ---
 function proceedNext() {
-    window.location.href = '/html/mainpage.html';
+    window.location.href = 'mainpage.html';
 }
